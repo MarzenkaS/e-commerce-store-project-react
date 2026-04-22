@@ -12,7 +12,9 @@ function Header({ cart, setCart }) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  {/* grouping cart */}
+  {
+    /* grouping cart */
+  }
   const groupedCart = cart.reduce((acc, item) => {
     const existingItem = acc.find((product) => product.id === item.id);
 
@@ -48,7 +50,7 @@ function Header({ cart, setCart }) {
         <div className="relative">
           <button
             onClick={() => setShowCartDropdown((prev) => !prev)}
-            className="bg-white text-orange-400 py-1 px-3 rounded hover:bg-orange-400 hover:text-white"
+            className="bg-white text-orange-500 py-1 px-3 rounded hover:bg-orange-400 hover:text-white"
           >
             🛒 Cart
           </button>
@@ -80,6 +82,10 @@ function Header({ cart, setCart }) {
                           </span>
                         </p>
                         <p className="text-sm text-gray-500">
+                          {item.price.toFixed(2)} € x {item.quantity}
+                        </p>
+
+                        <p className="text-sm font-semibold">
                           {(item.price * item.quantity).toFixed(2)} €
                         </p>
                       </div>

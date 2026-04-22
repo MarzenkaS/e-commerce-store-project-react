@@ -4,7 +4,12 @@
  * It receives product data as props and displays the product image, title, price, and an "Add to Cart" button.
  */
 
-function ProductCard({ product, onAddToCart, onViewDetails, onRemoveFromCart }) {
+function ProductCard({
+  product,
+  onAddToCart,
+  onViewDetails,
+  onRemoveFromCart,
+}) {
   return (
     <div className="p-4 bg-orange-100 shadow-md rounded-lg flex flex-col items-center">
       {/* Product Image */}
@@ -33,7 +38,7 @@ function ProductCard({ product, onAddToCart, onViewDetails, onRemoveFromCart }) 
           {/*  View more Button */}
           <button
             onClick={() => onViewDetails(product)}
-            className="bg-orange-400 text-white py-1 px-3 rounded hover:bg-white hover:text-orange-400"
+            className="bg-white text-orange-500 py-1 px-3 rounded hover:bg-orange-400 hover:text-white"
           >
             View more
           </button>
@@ -41,12 +46,12 @@ function ProductCard({ product, onAddToCart, onViewDetails, onRemoveFromCart }) 
 
         {/* Remove Button */}
         <button
-    onClick={() => onRemoveFromCart(product)}
-    className="absolute right-0 p-2 rounded text-lg bg-orange-100 text-white hover:bg-white"
-    title="Remove from cart"
-  >
-    🗑️
-  </button>
+          onClick={() => onRemoveFromCart(product)}
+          className="absolute right-0 p-2 rounded text-lg bg-orange-100 text-white hover:bg-white"
+          title="Remove from cart"
+        >
+          🗑️
+        </button>
       </div>
     </div>
   );
