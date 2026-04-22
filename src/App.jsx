@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       {/* Header Component */}
-      <Header cart={cart} />
+      <Header cart={cart} setCart={setCart} />
 
       {/* Main Content Component with Search and Filter Logic */}
       <Main

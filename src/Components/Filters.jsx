@@ -32,25 +32,25 @@ function Filters({
         <option value="groceries">Groceries</option>
         <option value="furniture">Furniture</option>
         <option value="home-decoration">Home Decoration</option>
-<option value="kitchen-accessories">Kitchen Accessories</option>
-<option value="laptops">Laptops</option>
-<option value="mens-shirts">Mens Shirts</option>
-<option value="mens-shoes">Mens Shoes</option>
-<option value="mens-watches">Mens Watches</option>
-<option value="mobile-accessories">Mobile Accessories</option>
-<option value="motorcycle">Motorcycle</option>
-<option value="skin-care">Skin Care</option>
-<option value="smartphones">Smartphones</option>
-<option value="sports-accessories">Sports Accessories</option>
-<option value="sunglasses">Sunglasses</option>
-<option value="tablets">Tablets</option>
-<option value="tops">Tops</option>
-<option value="vehicle">Vehicle</option>
-<option value="womens-bags">Womens Bags</option>
-<option value="womens-dresses">Womens Dresses</option>
-<option value="womens-jewellery">Womens Jewellery</option>
-<option value="womens-shoes">Womens Shoes</option>
-<option value="womens-watches">Womens Watches</option>
+        <option value="kitchen-accessories">Kitchen Accessories</option>
+        <option value="laptops">Laptops</option>
+        <option value="mens-shirts">Mens Shirts</option>
+        <option value="mens-shoes">Mens Shoes</option>
+        <option value="mens-watches">Mens Watches</option>
+        <option value="mobile-accessories">Mobile Accessories</option>
+        <option value="motorcycle">Motorcycle</option>
+        <option value="skin-care">Skin Care</option>
+        <option value="smartphones">Smartphones</option>
+        <option value="sports-accessories">Sports Accessories</option>
+        <option value="sunglasses">Sunglasses</option>
+        <option value="tablets">Tablets</option>
+        <option value="tops">Tops</option>
+        <option value="vehicle">Vehicle</option>
+        <option value="womens-bags">Womens Bags</option>
+        <option value="womens-dresses">Womens Dresses</option>
+        <option value="womens-jewellery">Womens Jewellery</option>
+        <option value="womens-shoes">Womens Shoes</option>
+        <option value="womens-watches">Womens Watches</option>
       </select>
     </div>
   );
