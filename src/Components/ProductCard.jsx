@@ -6,7 +6,7 @@
 
 function ProductCard({ product, onAddToCart }) {
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg flex flex-col items-center">
+    <div className="p-4 bg-orange-100 shadow-md rounded-lg flex flex-col items-center">
       {/* Product Image */}
       <img
         src={product.image}

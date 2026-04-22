@@ -6,9 +6,9 @@
 
 function Header() {
   return (
-    <header className="bg-blue-500 text-white p-4 flex justify-between items-center">
+    <header className="bg-orange-400 text-white p-4 flex justify-between items-center">
       {/* Website Title */}
-      <h1 className="text-2xl font-bold">My E-Commerce Store</h1>
+      <h1 className="text-2xl font-bold">All in One Store</h1>
 
       {/* Navigation and Cart */}
       <nav className="flex items-center space-x-6">
