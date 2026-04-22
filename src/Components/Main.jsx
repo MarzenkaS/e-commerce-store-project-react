@@ -8,18 +8,35 @@ import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Filters from "./Filters";
 
-function Main({ searchTerm, setSearchTerm, selectedCategory, setSelectedCategory }) {
+function Main({
+  searchTerm,
+  setSearchTerm,
+  selectedCategory,
+  setSelectedCategory,
+  cart,
+  setCart,
+}) {
   // State for storing products
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+  const handleRemoveFromCart = (product) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== product.id));
+  };
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product);
+  };
 
   // Fetch products from the Fake Store API
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch("https://dummyjson.com/products?limit=0");
         const data = await response.json();
-        setProducts(data);
+        setProducts(data.products);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -32,7 +49,9 @@ function Main({ searchTerm, setSearchTerm, selectedCategory, setSelectedCategory
 
   // Filter products based on search term and selected category
   const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory
       ? product.category === selectedCategory
       : true;
@@ -48,7 +67,57 @@ function Main({ searchTerm, setSearchTerm, selectedCategory, setSelectedCategory
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        cart={cart}
+        setCart={setCart}
       />
+
+      {/* View More */}
+
+      {selectedProduct && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50" /* bg-orange-100 view on whole page plus inset-0 */
+          onClick={() => setSelectedProduct(null)} /* close clicking on bg */
+        >
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg w-80 text-center"
+            onClick={(e) =>
+              e.stopPropagation()
+            } /* prevent closing when clicking inside the modal */
+          >
+            <h2 className="text-xl font-bold">{selectedProduct.title}</h2>
+
+            <img
+              src={selectedProduct.thumbnail}
+              alt={selectedProduct.title}
+              className="w-40 h-40 object-cover mx-auto my-4"
+            />
+
+            <p className="text-gray-700">{selectedProduct.description}</p>
+
+            <p className="font-semibold mt-2">
+              {selectedProduct.price.toFixed(2)} €
+            </p>
+
+            <div className="mt-4 flex justify-center gap-3">
+              {/* Add To Cart button */}
+              <button
+                onClick={() => handleAddToCart(selectedProduct)}
+                className="bg-orange-400 text-white px-4 py-2 rounded hover:bg-white hover:text-orange-400"
+              >
+                Add to Cart
+              </button>
+
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="bg-orange-400 text-white px-4 py-2 rounded hover:bg-white hover:text-orange-400"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Product Listings */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -59,6 +128,9 @@ function Main({ searchTerm, setSearchTerm, selectedCategory, setSelectedCategory
             <ProductCard
               key={product.id}
               product={product}
+              onAddToCart={handleAddToCart}
+              onViewDetails={handleViewDetails}
+              onRemoveFromCart={handleRemoveFromCart}
             />
           ))
         )}

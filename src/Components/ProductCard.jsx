@@ -4,12 +4,12 @@
  * It receives product data as props and displays the product image, title, price, and an "Add to Cart" button.
  */
 
-function ProductCard({ product, onAddToCart }) {
+function ProductCard({ product, onAddToCart, onViewDetails, onRemoveFromCart }) {
   return (
     <div className="p-4 bg-orange-100 shadow-md rounded-lg flex flex-col items-center">
       {/* Product Image */}
       <img
-        src={product.image}
+        src={product.thumbnail}
         alt={product.title}
         className="w-32 h-32 object-cover mb-4"
       />
@@ -18,15 +18,36 @@ function ProductCard({ product, onAddToCart }) {
       <h3 className="text-lg font-bold text-gray-800">{product.title}</h3>
 
       {/* Product Price */}
-      <p className="text-gray-600">${product.price.toFixed(2)}</p>
+      <p className="text-gray-600">{product.price.toFixed(2)} €</p>
 
-      {/* Add to Cart Button */}
-      <button
-        onClick={() => onAddToCart(product)}
-        className="mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700"
-      >
-        Add to Cart
-      </button>
+      {/*  Buttons */}
+      <div className="mt-3 relative w-full flex items-center justify-center">
+        {/*  Add to Cart Button */}
+        <div className="flex gap-4">
+          <button
+            onClick={() => onAddToCart(product)}
+            className="bg-orange-400 text-white py-1 px-3 rounded hover:bg-white hover:text-orange-400"
+          >
+            Add to Cart
+          </button>
+          {/*  View more Button */}
+          <button
+            onClick={() => onViewDetails(product)}
+            className="bg-orange-400 text-white py-1 px-3 rounded hover:bg-white hover:text-orange-400"
+          >
+            View more
+          </button>
+        </div>
+
+        {/* Remove Button */}
+        <button
+    onClick={() => onRemoveFromCart(product)}
+    className="absolute right-0 p-2 rounded text-lg bg-orange-100 text-white hover:bg-white"
+    title="Remove from cart"
+  >
+    🗑️
+  </button>
+      </div>
     </div>
   );
 }
