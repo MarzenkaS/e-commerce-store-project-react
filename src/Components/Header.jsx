@@ -80,7 +80,7 @@ function Header({ cart, setCart }) {
                           </span>
                         </p>
                         <p className="text-sm text-gray-500">
-                          {item.price.toFixed(2)} €
+                          {(item.price * item.quantity).toFixed(2)} €
                         </p>
                       </div>
 
